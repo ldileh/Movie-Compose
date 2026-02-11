@@ -46,6 +46,9 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 
+    // coroutine
+    implementation(libs.kotlinx.coroutines.core)
+
     // unit test
     testImplementation(libs.junit)
     androidTestImplementation(libs.bundles.android.test)
@@ -53,4 +56,8 @@ dependencies {
     // dagger hilt
     implementation(libs.hilt)
     ksp(libs.hilt.compiler)
+
+    // network dependencies (retrofit & okhttp)
+    implementation(libs.bundles.networking)
+    ksp(libs.moshi.codegen)
 }

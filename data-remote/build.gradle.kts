@@ -2,7 +2,6 @@ plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.ksp)
-    id("com.google.dagger.hilt.android")
 }
 
 android {
@@ -42,7 +41,6 @@ dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
-    testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 
@@ -50,14 +48,13 @@ dependencies {
     implementation(libs.kotlinx.coroutines.core)
 
     // unit test
-    testImplementation(libs.junit)
+    testImplementation(libs.bundles.unit.test)
     androidTestImplementation(libs.bundles.android.test)
-
-    // dagger hilt
-    implementation(libs.hilt)
-    ksp(libs.hilt.compiler)
 
     // network dependencies (retrofit & okhttp)
     implementation(libs.bundles.networking)
     ksp(libs.moshi.codegen)
+
+    // javax inject (enable to call annotation @Inject in kotlin)
+    implementation(libs.javax.inject)
 }

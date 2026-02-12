@@ -5,6 +5,10 @@ plugins {
     id("com.google.dagger.hilt.android")
 }
 
+// get some attributes from gradle properties
+val movieApiKey: String by project
+val movieBaseUrl: String by project
+
 android {
     namespace = "com.ldileh.moviecompose"
     compileSdk {
@@ -19,6 +23,9 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField("String", "API_KEY", "\"${movieApiKey}\"")
+        buildConfigField("String", "BASE_URL", "\"${movieBaseUrl}\"")
     }
 
     buildTypes {
@@ -28,12 +35,6 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
-
-            buildConfigField(
-                "String",
-                "BASE_URL",
-                "\"https://api.themoviedb.org/3/\""
-            )
         }
 
         debug {
@@ -41,12 +42,6 @@ android {
 
             applicationIdSuffix = ".debug"
             versionNameSuffix = "-debug"
-
-            buildConfigField(
-                "String",
-                "BASE_URL",
-                "\"https://api.themoviedb.org/3/\""
-            )
         }
     }
     compileOptions {
@@ -69,6 +64,7 @@ android {
 dependencies {
     // local modules
     implementation(project(":data"))
+    implementation(project(":data-remote"))
 
     // main dependencies
     implementation(libs.androidx.core.ktx)
@@ -78,7 +74,7 @@ dependencies {
     implementation(libs.bundles.kotlin.coroutines)
 
     // unit test
-    testImplementation(libs.junit)
+    testImplementation(libs.bundles.unit.test)
     androidTestImplementation(libs.bundles.android.test)
     androidTestImplementation(platform(libs.androidx.compose.bom))
     debugImplementation(libs.bundles.debug.implementation)

@@ -10,6 +10,6 @@ class GetPopularMoviesUseCase @Inject constructor(
 ) {
 
     operator fun invoke(page: Int = 1): Flow<List<Movie>>{
-        return repository.getMovies(page)
+        return repository.getPopularMovies(page)
     }
 }

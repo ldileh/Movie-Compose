@@ -7,7 +7,7 @@ import kotlinx.coroutines.flow.flow
 
 class FakeMovieRepository: MovieRepository {
 
-    override fun getMovies(page: Int): Flow<List<Movie>> = flow {
+    override fun getPopularMovies(page: Int): Flow<List<Movie>> = flow {
         emit(
             listOf(
                 Movie(

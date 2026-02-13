@@ -5,5 +5,5 @@ import kotlinx.coroutines.flow.Flow
 
 interface MovieRepository {
 
-    fun getMovies(page: Int): Flow<List<Movie>>
+    fun getPopularMovies(page: Int): Flow<List<Movie>>
 }

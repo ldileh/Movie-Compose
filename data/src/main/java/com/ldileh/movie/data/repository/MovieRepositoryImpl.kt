@@ -11,7 +11,7 @@ class MovieRepositoryImpl @Inject constructor(
     private val remoteDataSource: MovieRemoteDataSource
 ): MovieRepository {
 
-    override fun getMovies(page: Int): Flow<List<Movie>> = flow {
+    override fun getPopularMovies(page: Int): Flow<List<Movie>> = flow {
         emit(remoteDataSource.getPopularMovies(page))
     }
 }

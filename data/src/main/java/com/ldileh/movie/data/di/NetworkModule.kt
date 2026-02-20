@@ -41,8 +41,8 @@ object NetworkModule {
         return RetrofitFactory.create(config = remoteConfig, client = httpClient, moshi = moshi)
     }
 
-    @Singleton
     @Provides
+    @Singleton
     fun provideMovieApi(retrofit: Retrofit): MovieApi = retrofit.create(MovieApi::class.java)
 
 }

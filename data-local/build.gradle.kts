@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.ksp)
 }
 
 android {
@@ -40,7 +41,14 @@ dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
+
+    // unit test
     testImplementation(libs.bundles.unit.test)
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
+    androidTestImplementation(libs.bundles.android.test)
+    androidTestImplementation(libs.room.testing)
+    androidTestImplementation(libs.turbine)
+
+    // local storage
+    api(libs.bundles.local.storage)
+    ksp(libs.room.compiler)
 }

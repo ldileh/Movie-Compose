@@ -21,6 +21,7 @@ moshi = "1.15.0"
 javaxInject = "1"
 turbine = "1.0.0"
 mockk = "1.13.8"
+room = "2.6.1"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -53,6 +54,10 @@ javax-inject = { group = "javax.inject", name = "javax.inject", version.ref = "j
 coroutine-test = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-test", version.ref = "coroutines" }
 turbine = { group = "app.cash.turbine", name = "turbine", version.ref = "turbine" }
 mockk = { group = "io.mockk", name = "mockk", version.ref = "mockk" }
+room-runtime = { module = "androidx.room:room-runtime", version.ref = "room" }
+room-ktx = { module = "androidx.room:room-ktx", version.ref = "room" }
+room-compiler = { module = "androidx.room:room-compiler", version.ref = "room" }
+room-testing = { module = "androidx.room:room-testing", version.ref = "room" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
@@ -95,5 +100,9 @@ networking = [
     "okhttp-core",
     "okhttp-logging",
     "moshi-core"
+]
+local-storage = [
+    "room-runtime",
+    "room-ktx"
 ]
 

@@ -2,7 +2,6 @@ package com.ldileh.movie.data.local
 
 import android.content.Context
 import androidx.room.Room
-import com.ldileh.movie.data.local.MovieDatabase
 
 object DatabaseFactory {
 

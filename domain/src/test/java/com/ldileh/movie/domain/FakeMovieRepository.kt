@@ -4,7 +4,6 @@ import com.ldileh.movie.domain.model.Movie
 import com.ldileh.movie.domain.repository.MovieRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.flow
 
 class FakeMovieRepository(
     initialMovies: List<Movie> = emptyList()

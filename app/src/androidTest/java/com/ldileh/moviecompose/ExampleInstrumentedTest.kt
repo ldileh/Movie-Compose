@@ -19,6 +19,8 @@ class ExampleInstrumentedTest {
     fun useAppContext() {
         // Context of the app under test.
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
-        assertEquals("com.ldileh.moviecompose", appContext.packageName)
+
+        val packageName = "com.ldileh.moviecompose${if (BuildConfig.DEBUG) ".debug" else ""}"
+        assertEquals(packageName, appContext.packageName)
     }
 }

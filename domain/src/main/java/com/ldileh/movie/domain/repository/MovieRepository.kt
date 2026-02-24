@@ -5,5 +5,7 @@ import kotlinx.coroutines.flow.Flow
 
 interface MovieRepository {
 
-    fun getPopularMovies(page: Int): Flow<List<Movie>>
+    fun getPopularMovies(): Flow<List<Movie>>
+    suspend fun refreshPopularMovies()
+    suspend fun loadNextPage(page: Int)
 }

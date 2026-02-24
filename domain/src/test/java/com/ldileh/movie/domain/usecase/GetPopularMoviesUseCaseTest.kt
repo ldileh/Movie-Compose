@@ -2,38 +2,61 @@ package com.ldileh.movie.domain.usecase
 
 import app.cash.turbine.test
 import com.ldileh.movie.domain.FakeMovieRepository
+import com.ldileh.movie.domain.model.Movie
 import junit.framework.TestCase.assertEquals
 import kotlinx.coroutines.test.runTest
+import org.junit.Before
 import org.junit.Test
 
 class GetPopularMoviesUseCaseTest {
 
-    private val fakeRepository = FakeMovieRepository()
-    private val useCase = GetPopularMoviesUseCase(fakeRepository)
+    private lateinit var fakeRepository: FakeMovieRepository
+    private lateinit var useCase: GetPopularMoviesUseCase
+
+    @Before
+    fun setUp() {
+        val initialMovies = listOf(
+            Movie(1, "Initial", "Overview", null, null, 8.0)
+        )
+        fakeRepository = FakeMovieRepository(initialMovies)
+        useCase = GetPopularMoviesUseCase(fakeRepository)
+    }
 
     @Test
     fun `Default page parameter invocation`() = runTest {
-        // Verify that invoking the use case without a page number defaults to calling the repository with page 1.
         useCase().test {
             val result = awaitItem()
 
             assertEquals(1, result.size)
-            assertEquals("Test Movie", result.first().title)
-
-            awaitComplete()
+            assertEquals("Initial", result.first().title)
         }
     }
 
     @Test
-    fun `Specific page parameter invocation`() = runTest{
-        // Verify that invoking the use case with a specific page number calls the repository with that same page number.
-        useCase(1).test {
+    fun `Should replace data`() = runTest {
+        useCase().test {
+            assertEquals("Initial", awaitItem().first().title)
+
+            fakeRepository.refreshPopularMovies()
             val result = awaitItem()
-
             assertEquals(1, result.size)
-            assertEquals("Test Movie", result.first().title)
+            assertEquals("Refreshed Movie", result.first().title)
+        }
+    }
 
-            awaitComplete()
+    @Test
+    fun `Should append data`() = runTest {
+        useCase().test {
+            assertEquals("Initial", awaitItem().first().title)
+
+            fakeRepository.refreshPopularMovies()
+            val refreshResult = awaitItem()
+            assertEquals(1, refreshResult.size)
+            assertEquals("Refreshed Movie", refreshResult.first().title)
+
+            fakeRepository.loadNextPage(2)
+            val nextPage = awaitItem()
+            assertEquals(2, nextPage.size)
         }
     }
 

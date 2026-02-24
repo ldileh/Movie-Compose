@@ -44,9 +44,10 @@ dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
+
+    // unit test
     testImplementation(libs.bundles.unit.test)
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
+    androidTestImplementation(libs.bundles.android.test)
 
     // dagger hilt
     implementation(libs.hilt)

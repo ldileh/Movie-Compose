@@ -1,6 +1,6 @@
 [versions]
-agp = "8.13.2"
-kotlin = "1.9.24"
+agp = "9.1.0"
+kotlin = "2.2.10"
 coreKtx = "1.17.0"
 junit = "4.13.2"
 junitVersion = "1.3.0"
@@ -8,11 +8,10 @@ uiTestJunit4 = "1.10.2"
 espressoCore = "3.7.0"
 lifecycleRuntimeKtx = "2.10.0"
 activityCompose = "1.12.2"
-composeCompiler = "1.5.14"
-composeBom = "2024.06.00"
+composeBom = "2025.02.00"
 appcompat = "1.7.1"
 material = "1.13.0"
-ksp = "1.9.24-1.0.20"
+ksp = "2.2.21-2.0.4"
 hilt = "2.52"
 coroutines = "1.8.1"
 retrofit = "2.9.0"
@@ -21,7 +20,7 @@ moshi = "1.15.0"
 javaxInject = "1"
 turbine = "1.0.0"
 mockk = "1.13.8"
-room = "2.6.1"
+room = "2.7.0-alpha11"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -105,4 +104,3 @@ local-storage = [
     "room-runtime",
     "room-ktx"
 ]
-
